@@ -1,5 +1,5 @@
 /**
- *    Copyright 2009-2016 the original author or authors.
+ *    Copyright 2009-2021 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -44,8 +44,10 @@ public class SqlSessionFactoryBuilder {
     return build(reader, null, properties);
   }
 
+   // 新建 SqlSessionFactory
   public SqlSessionFactory build(Reader reader, String environment, Properties properties) {
     try {
+        // 新建 xml 配置构建类， configuration 初始化了，很多配置类都已经初始化了，
       XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, properties);
       return build(parser.parse());
     } catch (Exception e) {

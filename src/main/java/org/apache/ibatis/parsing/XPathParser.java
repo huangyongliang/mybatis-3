@@ -210,6 +210,7 @@ public class XPathParser {
   }
 
   public XNode evalNode(Object root, String expression) {
+      // 调用 XPath解析node
     Node node = (Node) evaluate(expression, root, XPathConstants.NODE);
     if (node == null) {
       return null;
@@ -264,6 +265,7 @@ public class XPathParser {
     this.validation = validation;
     this.entityResolver = entityResolver;
     this.variables = variables;
+    // jdk自带工厂类去实例化
     XPathFactory factory = XPathFactory.newInstance();
     this.xpath = factory.newXPath();
   }
