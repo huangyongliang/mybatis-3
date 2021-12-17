@@ -24,7 +24,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import org.apache.ibatis.cache.Cache;
 
 /**
- * Weak Reference cache decorator.
+ * Weak Reference cache decorator.弱引用缓存装饰者类
  * Thanks to Dr. Heinz Kabutz for his guidance here.
  * 
  * @author Clinton Begin

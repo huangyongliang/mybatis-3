@@ -136,13 +136,14 @@ public class Configuration {
   /**
    * Configuration factory class.
    * Used to create Configuration for loading deserialized unread properties.
-   *
+   * 配置工厂类。<br>
+   * 用于创建用于加载反序列化未读属性的配置。
    * @see <a href='https://code.google.com/p/mybatis/issues/detail?id=300'>Issue 300 (google code)</a>
    */
   protected Class<?> configurationFactory;
 
   protected final MapperRegistry mapperRegistry = new MapperRegistry(this);
-  // 拦截器连
+  // 插件拦截器链
   protected final InterceptorChain interceptorChain = new InterceptorChain();
   protected final TypeHandlerRegistry typeHandlerRegistry = new TypeHandlerRegistry();
   protected final TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
@@ -167,6 +168,7 @@ public class Configuration {
    * A map holds cache-ref relationship. The key is the namespace that
    * references a cache bound to another namespace and the value is the
    * namespace which the actual cache is bound to.
+   * map包含cache-ref关系。键是引用绑定到另一个名称空间的缓存的名称空间，值是实际缓存绑定到的名称空间。
    */
   protected final Map<String, String> cacheRefMap = new HashMap<String, String>();
 

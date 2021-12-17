@@ -84,8 +84,9 @@ public class XMLConfigBuilder extends BaseBuilder {
   }
 
   private XMLConfigBuilder(XPathParser parser, String environment, Properties props) {
+    // 新建Configuration类  登记很多初始化类
     super(new Configuration());
-    // ?? 加载异常文本吗？
+    // 异常文本加载初始化
     ErrorContext.instance().resource("SQL Mapper Configuration");
     this.configuration.setVariables(props);
     this.parsed = false;
@@ -113,15 +114,21 @@ public class XMLConfigBuilder extends BaseBuilder {
       propertiesElement(root.evalNode("properties"));
       Properties settings = settingsAsProperties(root.evalNode("settings"));
       // Provides a very simple API for accessing resources within an application server.
+      // 提供了一个非常简单的API,可以在应用服务器内部访问资源
       loadCustomVfs(settings);
+      // 类型别名注册
       typeAliasesElement(root.evalNode("typeAliases"));
+      // 插件注册
       pluginElement(root.evalNode("plugins"));
+      // 对象工厂用于创建对象
       objectFactoryElement(root.evalNode("objectFactory"));
+      // 默认是 DefaultObjectWrapperFactory 一般不提供 ObjectWrapper.
       objectWrapperFactoryElement(root.evalNode("objectWrapperFactory"));
+      // 反射类工厂方便获取反射类 默认DefaultReflectorFactory
       reflectorFactoryElement(root.evalNode("reflectorFactory"));
       //configuration级别的配置初始化
       settingsElement(settings);
-      // 数据源和事务管理
+      // 环境配置-数据源和事务管理
       // read it after objectFactory and objectWrapperFactory issue #631
       environmentsElement(root.evalNode("environments"));
       databaseIdProviderElement(root.evalNode("databaseIdProvider"));
@@ -251,7 +258,9 @@ public class XMLConfigBuilder extends BaseBuilder {
   }
 
   private void settingsElement(Properties props) throws Exception {
+    // 未知列自动映射行为
     configuration.setAutoMappingBehavior(AutoMappingBehavior.valueOf(props.getProperty("autoMappingBehavior", "PARTIAL")));
+    // 未知行自动映射行为
     configuration.setAutoMappingUnknownColumnBehavior(AutoMappingUnknownColumnBehavior.valueOf(props.getProperty("autoMappingUnknownColumnBehavior", "NONE")));
     // 缓存，二级缓存
     configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), true));
@@ -267,6 +276,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     configuration.setDefaultFetchSize(integerValueOf(props.getProperty("defaultFetchSize"), null));
     configuration.setMapUnderscoreToCamelCase(booleanValueOf(props.getProperty("mapUnderscoreToCamelCase"), false));
     configuration.setSafeRowBoundsEnabled(booleanValueOf(props.getProperty("safeRowBoundsEnabled"), false));
+    // 缓存作用范围 默认是Session级别
     configuration.setLocalCacheScope(LocalCacheScope.valueOf(props.getProperty("localCacheScope", "SESSION")));
     // jdbcTypeForNull的初始化
     configuration.setJdbcTypeForNull(JdbcType.valueOf(props.getProperty("jdbcTypeForNull", "OTHER")));

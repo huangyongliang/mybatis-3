@@ -22,7 +22,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import org.apache.ibatis.cache.Cache;
 
 /**
- * FIFO (first in, first out) cache decorator
+ * FIFO (first in, first out) cache decorator FIFO先进先出缓存装饰者类
  *
  * @author Clinton Begin
  */

@@ -40,6 +40,7 @@ public class ArrayResultTypeTest {
     reader.close();
 
     // populate in-memory database
+    // 添加内存数据库
     SqlSession session = sqlSessionFactory.openSession();
     Connection conn = session.getConnection();
     reader = Resources.getResourceAsReader("org/apache/ibatis/submitted/array_result_type/CreateDB.sql");

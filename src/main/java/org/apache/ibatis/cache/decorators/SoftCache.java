@@ -24,7 +24,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import org.apache.ibatis.cache.Cache;
 
 /**
- * Soft Reference cache decorator
+ * Soft Reference cache decorator 软引用缓存装饰者类
  * Thanks to Dr. Heinz Kabutz for his guidance here.
  *
  * @author Clinton Begin
