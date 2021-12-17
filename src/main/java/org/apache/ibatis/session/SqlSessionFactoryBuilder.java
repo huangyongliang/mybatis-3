@@ -48,6 +48,7 @@ public class SqlSessionFactoryBuilder {
   public SqlSessionFactory build(Reader reader, String environment, Properties properties) {
     try {
         // 新建 xml 配置构建类， configuration 初始化了，很多配置类都已经初始化了，
+        // 添加说明
       XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, properties);
       return build(parser.parse());
     } catch (Exception e) {
