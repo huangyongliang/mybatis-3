@@ -13,44 +13,24 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.apache.ibatis.submitted.enum_with_method;
 
-public class User {
+package org.apache.ibatis.submitted.discriminator;
 
+public class Contract {
   private Integer id;
-  private String name;
-  private Currency cur;
-  private Mood mood;
+  private Owner owner;
+
+  public Contract(Integer id, Owner owner) {
+    super();
+    this.id = id;
+    this.owner = owner;
+  }
 
   public Integer getId() {
     return id;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Currency getCur() {
-    return cur;
-  }
-
-  public void setCur(Currency cur) {
-    this.cur = cur;
-  }
-
-  public Mood getMood() {
-    return mood;
-  }
-
-  public void setMood(Mood mood) {
-    this.mood = mood;
+  public Owner getOwner() {
+    return owner;
   }
 }
